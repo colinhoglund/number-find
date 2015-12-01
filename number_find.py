@@ -1,8 +1,11 @@
+""" Find the duplicate number game """
 import random
+import datetime
 
-class NumberFind:
+class NumberFind(object):
+    """ game object """
     def __init__(self):
-        self.grid_sizes = range(3,8)
+        self.grid_sizes = range(3, 8)
 
     def _get_grid_size(self):
         return raw_input('Choose a grid size: {0} '.format(self.grid_sizes))
@@ -27,6 +30,7 @@ class NumberFind:
         self.numbers[answer_locations[1]] = self.answer
 
     def play(self):
+        """ play game """
         self._setup_grid()
 
         counter = 0
@@ -38,10 +42,14 @@ class NumberFind:
                 print ' '.join('{:4}'.format(x) for x in line)
                 counter = 0
                 line = []
+        start_time = datetime.datetime.now()
         user_answer = raw_input('What is the answer? ')
+        end_time = datetime.datetime.now()
+        diff_time = end_time - start_time
         try:
             if int(user_answer) == self.answer:
-                print 'YOU WIN!'
+                print '\nYOU WIN!'
+                print "Time: {} seconds\n".format(diff_time.total_seconds())
             else:
                 print 'You lost...'
         except:
