@@ -56,5 +56,4 @@ class NumberFind(object):
             print 'You lost...'
 
 if __name__ == '__main__':
-    game = NumberFind()
-    game.play()
+    NumberFind().play()
